@@ -12,9 +12,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     ScheduleModule,
     BaggageModule,
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(
-      'mongodb+srv://salamancajr:v2i4C5ntXhrmG*D@cluster0.lhppp.mongodb.net/flights?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forRoot(process.env.MONGODB_URI),
   ],
   controllers: [],
   providers: [],
