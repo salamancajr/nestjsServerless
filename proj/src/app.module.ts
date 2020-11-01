@@ -5,6 +5,8 @@ import { BaggageModule } from './baggage/baggage.module';
 import { lambdaWrapper } from './utils/lambdaWrapper';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -16,10 +18,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       'mongodb+srv://salamancajr:v2i4C5ntXhrmG*D@cluster0.lhppp.mongodb.net/flights?retryWrites=true&w=majority',
     ),
   ],
-  controllers: [],
-  providers: [],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
-export async function handler() {
-  return lambdaWrapper(AppModule);
-}

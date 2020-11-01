@@ -7,8 +7,6 @@
   "license": "UNLICENSED",
   "scripts": {
     "start:dev": "nest start --watch",
-    "deploy": "mkdir .build && cp ./webpack-sls.config.js ./.build/webpack-sls.config.js && sls deploy",
-    "offline": "mkdir .build && cp ./webpack-sls.config.js ./.build/webpack-sls.config.js && sls offline",
     "browserify": "browserify dist/main.js -o bundle.js --node",
     "prebuild": "rimraf dist",
     "build": "nest build",
