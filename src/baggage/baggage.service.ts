@@ -1,24 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { Model } from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
 import { CreateBaggageDto } from 'src/dto/create-baggage.dto';
-import { Baggage } from '../entities/baggage.entity';
+import { Baggage } from '../schemas/baggage.schema';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 @Injectable()
 export class BaggageService {
   constructor(
     // private readonly configService: ConfigService,
     // @Inject('TEST') private readonly testArray: string[],
-    @InjectModel(Baggage.name) private readonly baggageModel: Model<Baggage>,
+    @InjectModel(Baggage.name)
+    private readonly baggageModel: Model<Baggage>,
   ) {}
   async findAll() {
-    const res = await this.baggageModel.find();
-    console.log('baggageModel', res);
     return this.baggageModel.find();
   }
   findOne(id: string) {
-    return this.baggageModel.findById(id);
+    return this.baggageModel.findOne(id);
   }
   createOne(createBaggage: CreateBaggageDto) {
-    return new this.baggageModel(createBaggage).save();
+    const baggage = new this.baggageModel(createBaggage);
+    return baggage.save();
   }
 }

@@ -30,7 +30,9 @@ package:
   individually: true
 functions:
   baggage:
-    handler: src/main.handler
+    package:
+      exclude: src/**
+    handler: src/baggage/baggage.module.handler
     events:
       - http:
           method: get
