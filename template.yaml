@@ -6,6 +6,7 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
+      CodeUri: ./webpack
       Handler: bundle.handler
       Runtime: nodejs12.x
       #CodeUri: deploy/nest-lambda.zip
