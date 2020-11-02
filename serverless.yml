@@ -5,7 +5,7 @@ plugins:
   - '@hewmen/serverless-plugin-typescript'
   # - serverless-plugin-optimize
   - serverless-offline
-  #- serverless-webpack
+  - serverless-webpack
 # - serverless-plugin-warmup
 
 # custom:
@@ -21,11 +21,11 @@ provider:
 #     path: ./node_modules/mongoose
 #     compatibleRuntimes:
 #       - nodejs12.x
-# custom:
-#   webpack:
-#     includeModules: true
-#     webpackConfig: ./webpack-sls.config.js
-#     packager: 'npm'
+custom:
+  webpack:
+    includeModules: true
+    webpackConfig: ./webpack-sls.config.js
+    packager: 'npm'
 package:
   individually: true
 functions:

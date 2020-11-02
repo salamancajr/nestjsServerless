@@ -33,6 +33,7 @@ module.exports = {
     new webpack.IgnorePlugin({
       checkResource(resource) {
         const lazyImports = [
+          'fastify-swagger',
           '@nestjs/microservices',
           '@nestjs/platform-express',
           'cache-manager',
