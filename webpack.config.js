@@ -2,7 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 module.exports = {
-  entry: './src/main.ts',
+  entry: './src/lambda-entry-point.ts',
   target: 'node',
   devtool: 'inline-source-map',
   module: {
@@ -18,6 +18,7 @@ module.exports = {
     new webpack.IgnorePlugin({
       checkResource(resource) {
         const lazyImports = [
+          'fastify-swagger',
           '@nestjs/microservices',
           '@nestjs/platform-express',
           'cache-manager',
@@ -43,7 +44,7 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'webpack'),
     libraryTarget: 'commonjs',
   },
   externals: {

@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "flights-new"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1xe0ganc9g9im"
+s3_prefix = "flights-new"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
