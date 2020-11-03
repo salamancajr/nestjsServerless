@@ -1,5 +1,4 @@
 image: node:latest
-rules: when:manual
 stages:
   - build
   - test
@@ -25,6 +24,8 @@ test:
     - echo "Testing"
     - npm test
 deploy:
+  rules:
+    - when: manual
   stage: deploy
   script:
     - pip3 install awscli --upgrade
