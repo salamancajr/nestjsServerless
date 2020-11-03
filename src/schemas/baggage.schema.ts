@@ -3,7 +3,7 @@ import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema()
-export class Baggage {
+export class Baggage extends Document {
   @Prop()
   weight: number;
 

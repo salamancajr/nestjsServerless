@@ -47,6 +47,7 @@ module.exports = {
     path: path.resolve(__dirname, 'webpack'),
     libraryTarget: 'commonjs',
   },
+  stats: 'errors-only',
   externals: {
     // mongodb: {
     //   commonjs: 'mongodb',
