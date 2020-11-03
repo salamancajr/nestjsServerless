@@ -2,7 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 module.exports = {
-  entry: './src/lambda-entry-point.ts',
+  entry: './src/root2.ts',
   target: 'node',
   devtool: 'inline-source-map',
   module: {
@@ -48,10 +48,10 @@ module.exports = {
     libraryTarget: 'commonjs',
   },
   externals: {
-    mongodb: {
-      commonjs: 'mongodb',
-      amd: 'mongodb',
-    },
+    // mongodb: {
+    //   commonjs: 'mongodb',
+    //   amd: 'mongodb',
+    // },
     mongoose: {
       commonjs: 'mongoose',
       amd: 'mongoose',

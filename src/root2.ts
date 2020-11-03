@@ -1,4 +1,4 @@
-import { lambdaWrapper } from './utils/lambdaWrapper';
+import { lambdaHandler } from './scheduleMain';
 import { AppModule } from './app.module';
 
-export const handler = lambdaWrapper(AppModule);
+export const handler = lambdaHandler(AppModule);

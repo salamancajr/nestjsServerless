@@ -9,7 +9,6 @@ Resources:
       CodeUri: ./webpack
       Handler: bundle.handler
       Runtime: nodejs12.x
-      #CodeUri: deploy/nest-lambda.zip
       MemorySize: 1512
       Policies: AWSLambdaBasicExecutionRole
       Timeout: 60
