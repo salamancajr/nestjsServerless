@@ -8,6 +8,8 @@ Resources:
     Properties:
       CodeUri: ./webpack
       Handler: bundle.handler
+      Layers:
+        - !Ref TempConversionDepLayer
       Runtime: nodejs12.x
       MemorySize: 1512
       Policies: AWSLambdaBasicExecutionRole
@@ -18,7 +20,18 @@ Resources:
           Properties:
             Path: /{proxy+}
             Method: any
-
+  TempConversionDepLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: sam-app-dependencies
+      Description: Dependencies for sam app [temp-units-conv]
+      ContentUri: dependencies/
+      CompatibleRuntimes:
+        - nodejs6.10
+        - nodejs8.10
+        - nodejs12.x
+      LicenseInfo: 'MIT'
+      RetentionPolicy: Retain
 # Outputs:
 #   LambdaSpringBootApi:
 #     Description: URL for application
