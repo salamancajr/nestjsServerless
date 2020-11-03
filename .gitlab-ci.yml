@@ -10,7 +10,7 @@ build:
     - npm install
   script:
     - echo "Building"
-    - npm webpack
+    - npm run webpack
     - cd dependencies/nodejs && npm install
   artifacts:
     paths:

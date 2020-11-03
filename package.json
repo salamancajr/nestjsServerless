@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "webpack": "webpack",
     "start:dev": "nest start --watch",
     "browserify": "browserify dist/main.js -o bundle.js --node",
     "prebuild": "rimraf dist",
