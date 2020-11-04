@@ -17,16 +17,19 @@ build:
       - node_modules/
       - webpack
       - dependencies/nodejs/node_modules
+
 test:
   stage: test
-
   script:
     - echo "Testing"
     - npm test
+
 deploy:
+  image: python:latest
   rules:
     - when: manual
   stage: deploy
   script:
     - pip3 install awscli --upgrade
     - pip3 install aws-sam-cli --upgrade
+    - sam deploy --template-file template.yaml
