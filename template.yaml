@@ -1,15 +1,14 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Lambda with nestjs.
-
 Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ./webpack
+      CodeUri: s3://gitlab-test123/c7dff103a352b60d7dc0048fea303274
       Handler: bundle.handler
       Layers:
-        - !Ref TempConversionDepLayer
+        - Ref: TempConversionDepLayer
       Runtime: nodejs12.x
       MemorySize: 1512
       Policies: AWSLambdaBasicExecutionRole
@@ -25,23 +24,27 @@ Resources:
     Properties:
       LayerName: sam-app-dependencies
       Description: Dependencies for sam app [temp-units-conv]
-      ContentUri: dependencies/
+      ContentUri: s3://gitlab-test123/9dc9b8aeb2f873f691c2d31bec9c4483
       CompatibleRuntimes:
         - nodejs6.10
         - nodejs8.10
         - nodejs12.x
-      LicenseInfo: 'MIT'
+      LicenseInfo: MIT
       RetentionPolicy: Retain
 Outputs:
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   HelloWorldApi:
-    Description: 'API Gateway endpoint URL for Prod stage for Hello World function'
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/'
+    Description: API Gateway endpoint URL for Prod stage for Hello World function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
   HelloWorldFunction:
-    Description: 'Hello World Lambda Function ARN'
-    Value: !GetAtt HelloWorldFunction.Arn
+    Description: Hello World Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+        - HelloWorldFunction
+        - Arn
   HelloWorldFunctionIamRole:
-    Description: 'Implicit IAM Role created for Hello World function'
-    Value: !GetAtt HelloWorldFunctionRole.Arn
+    Description: Implicit IAM Role created for Hello World function
+    Value:
+      Fn::GetAtt:
+        - HelloWorldFunctionRole
+        - Arn

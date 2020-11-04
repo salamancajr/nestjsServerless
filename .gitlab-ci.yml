@@ -30,6 +30,7 @@ deploy:
     - when: manual
   stage: deploy
   script:
+    - echo "Deploying"
     - pip3 install awscli --upgrade
     - pip3 install aws-sam-cli --upgrade
-    - sam deploy --template-file template.yaml
+    - sam deploy --template-file template.yaml --no-confirm-changeset
